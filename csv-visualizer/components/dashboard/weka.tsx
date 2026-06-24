@@ -214,13 +214,13 @@ function ClassificationView() {
         <span className="font-semibold text-foreground">Task: </span>
         Predict each country&apos;s <em>RenewableShareClass</em> (Low / Med / High) in heat production using 5-year heat totals and fuel mix as features.
         {" "}<span className="font-semibold text-foreground">J48 (Decision Tree): </span>
-        Achieved <span className="font-semibold text-foreground">{j48.correctPct}% accuracy</span> (Kappa {j48.kappa.toFixed(3)}) on the 27-country dataset. Kappa of {j48.kappa.toFixed(3)} indicates moderate agreement beyond chance — substantially better than random (33.3%) but not perfect. J48 performed best on the "High" class (F=0.778) and worst on "Med" (F=0.471), which is expected since borderline countries with balanced fossil/renewable mixes are hardest to separate.
+        Achieved <span className="font-semibold text-foreground">{j48.correctPct}% accuracy</span> (Kappa {j48.kappa.toFixed(3)}) on the 27-country dataset. Kappa of {j48.kappa.toFixed(3)} indicates moderate agreement beyond chance — substantially better than random (33.3%) but not perfect. J48 performed best on the &quot;High&quot; class (F=0.778) and worst on &quot;Med&quot; (F=0.471), which is expected since borderline countries with balanced fossil/renewable mixes are hardest to separate.
         {" "}<span className="font-semibold text-foreground">Random Forest: </span>
-        Slightly weaker at {rf.correctPct}% accuracy (Kappa {rf.kappa.toFixed(3)}). On a small dataset (n=27), Random Forest&apos;s ensemble advantage is nullified by overfitting risk with small training folds. The "High" class remained best predicted (F=0.737) while "Med" remains the hardest (F=0.400).
+        Slightly weaker at {rf.correctPct}% accuracy (Kappa {rf.kappa.toFixed(3)}). On a small dataset (n=27), Random Forest&apos;s ensemble advantage is nullified by overfitting risk with small training folds. The &quot;High&quot; class remained best predicted (F=0.737) while &quot;Med&quot; remains the hardest (F=0.400).
         {" "}<span className="font-semibold text-foreground">Policy implication: </span>
-        Countries classified as "Low" renewable heat share represent the clearest targets for district heating decarbonization policy — they are easy to identify and consistently misclassified least.
+        Countries classified as &quot;Low&quot; renewable heat share represent the clearest targets for district heating decarbonization policy — they are easy to identify and consistently misclassified least.
       </InterpretBox>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <MetricBadge label="J48 Accuracy"        value={`${j48.correctPct}%`} highlight />
         <MetricBadge label="J48 Kappa"           value={j48.kappa.toFixed(3)} />
         <MetricBadge label="Random Forest Acc."  value={`${rf.correctPct}%`} />
@@ -244,7 +244,7 @@ function ClassificationView() {
         </ChartCard>
 
         <ChartCard title="Confusion Matrices — Country Heat Classification" sub="Diagonal (green) = correct predictions. Off-diagonal = misclassified countries.">
-          <div className="grid grid-cols-2 gap-3 mt-1">
+          <div className="grid grid-cols-1 gap-3 mt-1 sm:grid-cols-2">
             {[{ label:"J48", rows:j48rows },{ label:"Random Forest", rows:rfRows }].map(({ label, rows }) => (
               <div key={label}>
                 <p className="text-[11px] font-semibold text-foreground mb-1.5">{label}</p>
@@ -295,7 +295,7 @@ function GepFuelView() {
         {" "}<span className="font-semibold text-foreground">Energy transition insight: </span>
         Despite constituting only 23% of fuel types, the High-Renewable cluster accounts for an outsized share of growth — Wind and Solar PV together grew from near-zero to over 700K GWh by 2024, surpassing the average Low-Renewable fuel&apos;s total output (213K GWh). The tight WCSSE confirms that these two groupings are genuinely distinct, not arbitrary cuts.
       </InterpretBox>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <MetricBadge label="WCSSE" value={wcsse.toFixed(3)} />
         <MetricBadge label="Iterations" value={iterations} />
         <MetricBadge label="Fuel Types" value="13" />
@@ -351,7 +351,7 @@ function GhpFuelView() {
         {" "}<span className="font-semibold text-foreground">Policy implication: </span>
         The large gap between clusters (WCSSE only 2.298) confirms heat fuel decarbonization is a binary problem: a small set of fuels drive renewable heat, while the majority of heat fuel types remain deeply fossil-dependent. Transitioning district heat from Gas to Bioenergy/Solar Thermal is the primary lever available.
       </InterpretBox>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <MetricBadge label="WCSSE" value={wcsse.toFixed(3)} />
         <MetricBadge label="Iterations" value={iterations} />
         <MetricBadge label="Fuel Types" value="13" />
@@ -419,7 +419,7 @@ function FuelMixView() {
         {" "}<span className="font-semibold text-foreground">Insight: </span>
         This clustering elegantly maps the structural transformation of EU electricity: two fuels surging from nothing, seven incumbents in managed decline, and three marginal fuels fading out entirely. The energy transition, seen through trajectory shapes rather than snapshots, follows a clear three-act pattern.
       </InterpretBox>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <MetricBadge label="WCSSE" value={wcsse.toFixed(3)} />
         <MetricBadge label="Fuel Types" value="12" />
         {clusters.map(c => (
@@ -469,7 +469,7 @@ function FuelMixView() {
 export function WekaDashboard() {
   const [view, setView] = useState<WekaView>("country-elec");
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <div className="flex flex-wrap gap-1.5">
           {VIEWS.map(v => (
@@ -485,7 +485,7 @@ export function WekaDashboard() {
         </div>
       </FilterBar>
 
-      <div className="flex-1 min-h-0 overflow-y-auto">
+      <div className="overflow-visible md:flex-1 md:min-h-0 md:overflow-y-auto">
         <div className="flex flex-col gap-4 p-4">
           <div className="flex items-baseline gap-3 flex-wrap">
             <h2 className="text-xl font-bold text-foreground">WEKA Machine Learning Results</h2>

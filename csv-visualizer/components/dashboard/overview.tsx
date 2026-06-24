@@ -63,18 +63,18 @@ export function OverviewDashboard() {
   const renewPp   = (renew2024 - fuelMixTimeSeries[0]["Renewables & Biofuels"]).toFixed(1);
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <YearRangeSlider value={yr} onChange={setYr} />
       </FilterBar>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3 p-4 overflow-hidden">
+      <div className="flex flex-col gap-3 p-4 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
         <div className="shrink-0 flex items-baseline gap-3 flex-wrap">
           <h2 className="text-xl font-bold text-foreground">EU-27 Energy Overview</h2>
           <p className="text-xs text-muted-foreground">Gross electricity &amp; heat production, 1999–2024 · Source: Eurostat</p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
           <StatCard label="Total Electricity 2024" value={formatGWh(elec2024)}  trend={Number(elecPct)>=0?"up":"down"} trendValue={`${elecPct}% vs 1999`} />
           <StatCard label="Total Heat 2024"         value={formatGWh(heat2024)}  trend={Number(heatPct)>=0?"up":"down"} trendValue={`${heatPct}% vs 1999`} />
           <StatCard label="Renewable Share 2024"    value={formatPct(renew2024)} accent trend="up" trendValue={`+${renewPp} pp since 1999`} />
@@ -82,9 +82,9 @@ export function OverviewDashboard() {
             trendValue={`Was ${formatPct(fuelMixTimeSeries[0]["Nuclear"])} in 1999`} />
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-2 auto-rows-fr gap-3">
+        <div className="grid grid-cols-1 gap-3 md:flex-1 md:min-h-0 md:grid-cols-2 md:auto-rows-fr">
           <ChartCard
-            className="h-full"
+            className="h-[320px] md:h-full"
             title="Electricity vs Heat Production"
             sub="GWh per 5-year interval — use year slider above to zoom."
             insight="Electricity has remained broadly stable (~2.5–2.9 TWh) while heat declined ~4% since 2004 as building efficiency improved.">
@@ -102,7 +102,7 @@ export function OverviewDashboard() {
           </ChartCard>
 
           <ChartCard
-            className="h-full"
+            className="h-[320px] md:h-full"
             title="Electricity Source Mix"
             sub="Proportional share: Renewable vs Nuclear vs Fossil in EU-27 gross electricity."
             insight="Renewables surpassed nuclear in 2009 and have grown continuously; fossil dropped from ~56% (1999) to ~33% (2024).">

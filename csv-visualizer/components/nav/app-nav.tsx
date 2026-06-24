@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/hooks/use-theme";
 
-export type NavSection = "overview" | "electricity" | "heat" | "countries" | "trends" | "weka";
+export type NavSection = "overview" | "electricity" | "heat" | "countries" | "trends" | "weka" | "presentors";
 
 const SECTIONS: { id: NavSection; label: string }[] = [
   { id: "overview",    label: "Overview" },
@@ -11,6 +11,7 @@ const SECTIONS: { id: NavSection; label: string }[] = [
   { id: "countries",   label: "Countries" },
   { id: "trends",      label: "Trends" },
   { id: "weka",        label: "WEKA Results" },
+  { id: "presentors",  label: "Presentors" },
 ];
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
 export function AppNav({ active, onChange }: Props) {
   const { dark, toggle } = useTheme();
   return (
-    <header className="flex items-center gap-0 border-b border-eu-border bg-[#003399] px-5 h-14 shrink-0 shadow-lg">
+    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-0 border-b border-eu-border bg-[#003399] px-5 shadow-lg md:relative">
       {/* EU Branding */}
       <div className="flex items-center gap-3 mr-8 shrink-0">
         <EUFlag />

@@ -60,29 +60,29 @@ export function HeatDashboard() {
     .sort((a, b) => b.value - a.value);
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <YearRangeSlider value={yr} onChange={setYr} />
         <div className="w-px h-5 bg-eu-border hidden sm:block shrink-0" />
         <FuelChips fuels={ALL_HEAT_FUELS} selected={fuels} colors={FUEL_COLORS} onChange={setFuels} />
       </FilterBar>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3 p-4 overflow-hidden">
+      <div className="flex flex-col gap-3 p-4 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
         <div className="shrink-0 flex items-baseline gap-3 flex-wrap">
           <h2 className="text-xl font-bold text-foreground">Gross Heat Production · EU-27</h2>
           <p className="text-xs text-muted-foreground">District heat &amp; CHP output by fuel, 1999–2024 · GWh</p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
           <StatCard label="Total GHP 2024"      value={formatGWh(total24)}  trend={total24>=total99?"up":"down"} trendValue={`${((total24-total99)/total99*100).toFixed(1)}% vs 1999`} />
           <StatCard label="Renewable Heat 2024"  value={formatPct(renew24)}  accent trend="up" trendValue={`Was ${formatPct(renew99)} in 1999`} />
           <StatCard label="Gas Share 2024"       value={formatPct(gas24)}    trend="down" trendValue="Largest single source" />
           <StatCard label="Fossil Share 2024"    value={formatPct(fossil24)} trend="down" trendValue="Gas + Coal + Oil + Lignite" />
         </div>
 
-        <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
-          <div className="flex-[3_3_0%] min-h-0 grid grid-cols-2 auto-rows-fr gap-3">
-            <ChartCard className="h-full"
+        <div className="flex flex-col gap-3 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
+          <div className="grid grid-cols-1 gap-3 md:flex-[3_3_0%] md:min-h-0 md:grid-cols-2 md:auto-rows-fr">
+            <ChartCard className="h-[320px] md:h-full"
               title="GHP by Fuel — Stacked Area"
               sub="GWh per period. Toggle fuels above to isolate sources."
               insight="Total heat peaked in 2004 (708 TWh) and has since declined ~21% as building efficiency improved.">
@@ -101,7 +101,7 @@ export function HeatDashboard() {
               </ResponsiveContainer>
             </ChartCard>
 
-            <ChartCard className="h-full"
+            <ChartCard className="h-[320px] md:h-full"
               title="2024 Heat Mix by Fuel"
               sub="Each segment = that fuel's % of total gross heat production."
               insight="Natural Gas 32.2%, but Renewables & Biofuels grew from 8.5% (1999) to 34.9% (2024) — now the second largest source.">
@@ -120,8 +120,8 @@ export function HeatDashboard() {
             </ChartCard>
           </div>
 
-          <div className="flex-[2_2_0%] min-h-0">
-            <ChartCard className="h-full"
+          <div className="md:flex-[2_2_0%] md:min-h-0">
+            <ChartCard className="h-[320px] md:h-full"
               title="Key Fuel Trends in Heat Production"
               sub="GWh trends 1999–2024 for the four largest heat fuel categories."
               insight="Natural Gas fell ~5% from 1999–2024 while Renewables & Biofuels nearly quadrupled (+293%). Solid Fossil Fuels fell 63%.">

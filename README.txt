@@ -263,6 +263,38 @@ For detailed section content, refer to STRUCTURE.txt in this folder.
 
 
 --------------------------------------------------------------------------------
+PRESENTORS
+--------------------------------------------------------------------------------
+
+  Photo: Presentors/presentor.jpg
+
+  +------------------------------------------------------------------+
+  |                                                                  |
+  |              [ see Presentors/presentor.jpg ]                    |
+  |                                                                  |
+  |   Three members of the project team photographed at             |
+  |   Mapua Malayan Colleges Mindanao campus.                       |
+  |                                                                  |
+  +------------------------------------------------------------------+
+
+  Team Members
+  ____________
+
+  1. Jonathan Lance Mayo                                        (left)
+     Role / Contribution: IS Student / Data Processor
+
+  2. Allyza Fe Villegas                                        (center)
+     Role / Contribution: IS Student / Data Processor
+
+  3. Darven Ross Naraga                                        (right)
+     Role / Contribution: IS Student / Data Processor
+
+  Course       : Applied Data Science
+  Institution  : Mapua Malayan Colleges Mindanao
+  Academic Year: 2025 – 2026
+
+
+--------------------------------------------------------------------------------
 NOTES
 --------------------------------------------------------------------------------
 

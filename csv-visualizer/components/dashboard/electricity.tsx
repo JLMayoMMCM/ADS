@@ -59,28 +59,28 @@ export function ElectricityDashboard() {
   const solar24 = mix2024["Solar PV"];
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <YearRangeSlider value={yr} onChange={setYr} />
         <div className="w-px h-5 bg-eu-border hidden sm:block shrink-0" />
         <FuelChips fuels={ALL_FUELS} selected={fuels} colors={FUEL_COLORS} onChange={setFuels} />
       </FilterBar>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3 p-4 overflow-hidden">
+      <div className="flex flex-col gap-3 p-4 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
         <div className="shrink-0 flex items-baseline gap-3 flex-wrap">
           <h2 className="text-xl font-bold text-foreground">Gross Electricity Production · EU-27</h2>
           <p className="text-xs text-muted-foreground">Fuel-mix breakdown, 1999–2024 · GWh · Toggle fuels above to compare</p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
           <StatCard label="Total GEP 2024"     value={formatGWh(gep2024)} trend="down" trendValue={`${((gep2024-gepTotals[0])/gepTotals[0]*100).toFixed(1)}% vs 1999`} />
           <StatCard label="Renewable Share"     value={formatPct(mix24)}   accent trend="up" trendValue={`Was ${formatPct(fuelMixTimeSeries[0]["Renewables & Biofuels"])} in 1999`} />
           <StatCard label="Wind Share 2024"     value={formatPct(wind24)}  trend="up" trendValue={`Was ${formatPct(fuelMixTimeSeries[0]["Wind"])} in 1999`} />
           <StatCard label="Solar PV Share 2024" value={formatPct(solar24)} trend="up" trendValue="≈0% in 1999" />
         </div>
 
-        <div className="flex-1 min-h-0 grid grid-cols-2 auto-rows-fr gap-3">
-          <ChartCard className="h-full"
+        <div className="grid grid-cols-1 gap-3 md:flex-1 md:min-h-0 md:grid-cols-2 md:auto-rows-fr">
+          <ChartCard className="h-[320px] md:h-full"
             title="GEP by Fuel — Stacked Area"
             sub="GWh per period. Each band = one fuel's contribution."
             insight="Renewables & Biofuels overtook Solid Fossil Fuels ~2009; now 46.5% of total GEP.">
@@ -99,7 +99,7 @@ export function ElectricityDashboard() {
             </ResponsiveContainer>
           </ChartCard>
 
-          <ChartCard className="h-full"
+          <ChartCard className="h-[320px] md:h-full"
             title="2024 Fuel Mix — Share of Gross Electricity"
             sub="Percentage breakdown. Legend shows each fuel's share.">
             <ResponsiveContainer width="100%" height="100%">
@@ -116,7 +116,7 @@ export function ElectricityDashboard() {
             </ResponsiveContainer>
           </ChartCard>
 
-          <ChartCard className="h-full"
+          <ChartCard className="h-[320px] md:h-full"
             title="Nuclear vs Renewables — GWh"
             sub="Energy transition crossover: renewables exceeded nuclear in 2014."
             insight="By 2024 renewables produce nearly 2× nuclear — 1,292 TWh vs 650 TWh.">
@@ -135,7 +135,7 @@ export function ElectricityDashboard() {
             </ResponsiveContainer>
           </ChartCard>
 
-          <ChartCard className="h-full"
+          <ChartCard className="h-[320px] md:h-full"
             title="Fuel Mix % — Stacked Bar"
             sub="Each bar sums to 100% of gross electricity by year."
             insight="Solid Fossil+Lignite fell from 41.8% (1999) to 15.7% (2024); Wind+Solar PV rose from 0.5% to 27.8%.">

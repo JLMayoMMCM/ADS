@@ -50,22 +50,22 @@ export function TrendsDashboard() {
     .map(f => ({ fuel: f.split(" ")[0], full: f, pct: trendGrowth.at(-1)![f] ?? 0 }));
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <YearRangeSlider value={yr} onChange={setYr} />
         <div className="w-px h-5 bg-eu-border hidden sm:block shrink-0" />
         <FuelChips fuels={TREND_FUELS} selected={fuels} colors={FUEL_COLORS} onChange={setFuels} />
       </FilterBar>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3 p-4 overflow-hidden">
+      <div className="flex flex-col gap-3 p-4 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
         <div className="shrink-0 flex items-baseline gap-3 flex-wrap">
           <h2 className="text-xl font-bold text-foreground">Electricity Production Trends · 1999–2024</h2>
           <p className="text-xs text-muted-foreground">Absolute GWh &amp; % change vs 1999 baseline · Toggle fuels to compare</p>
         </div>
 
-        <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
-          <div className="flex-[3_3_0%] min-h-0">
-            <ChartCard className="h-full"
+        <div className="flex flex-col gap-3 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
+          <div className="md:flex-[3_3_0%] md:min-h-0">
+            <ChartCard className="h-[360px] md:h-full"
               title="Absolute GWh Output by Fuel"
               sub="GWh per 5-year interval. Use year slider and fuel toggles to compare."
               insight="Renewables grew from 378K GWh (1999) to 1,292K GWh (2024) — +242%. Solid Fossil Fuels dropped from 744K to 272K GWh (−63%).">
@@ -85,8 +85,8 @@ export function TrendsDashboard() {
             </ChartCard>
           </div>
 
-          <div className="flex-[2_2_0%] min-h-0 grid grid-cols-2 auto-rows-fr gap-3">
-            <ChartCard className="h-full"
+          <div className="grid grid-cols-1 gap-3 md:flex-[2_2_0%] md:min-h-0 md:grid-cols-2 md:auto-rows-fr">
+            <ChartCard className="h-[320px] md:h-full"
               title="% Growth vs 1999 Baseline"
               sub="% change from 1999. Chart capped at ±300% — Wind/Solar PV have extreme outlier values (thousands of %)."
               insight="Solar PV grew 345,276% from 1999–2024 (86 GWh → 297K GWh). Nuclear declined 23.4%.">
@@ -106,7 +106,7 @@ export function TrendsDashboard() {
               </ResponsiveContainer>
             </ChartCard>
 
-            <ChartCard className="h-full"
+            <ChartCard className="h-[320px] md:h-full"
               title="2024 Change vs 1999 — Net Shift"
               sub="Bar shows % gain or loss from 1999 to 2024 for each selected fuel."
               insight="Green bars = net growth (renewables); blue bars = net decline (fossil fuels and nuclear). The contrast captures the energy transition.">

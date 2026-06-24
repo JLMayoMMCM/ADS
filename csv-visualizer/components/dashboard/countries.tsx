@@ -62,7 +62,7 @@ export function CountriesDashboard() {
   const scatterData = baseElec.map(r => ({ country: r.country, total: r.total2024, renewShare: r.renewShare }));
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-visible md:h-full md:overflow-hidden">
       <FilterBar>
         <div className="flex rounded-lg overflow-hidden border border-eu-border text-[11px] font-semibold shrink-0">
           {(["elec","heat"] as const).map(v => (
@@ -86,15 +86,15 @@ export function CountriesDashboard() {
         </div>
       </FilterBar>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3 p-4 overflow-hidden">
+      <div className="flex flex-col gap-3 p-4 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
         <div className="shrink-0 flex items-baseline gap-3 flex-wrap">
           <h2 className="text-xl font-bold text-foreground">Country-Level Energy Production · 2024</h2>
           <p className="text-xs text-muted-foreground">EU-27 member state breakdown — filter, sort, and compare electricity or heat production</p>
         </div>
 
-        <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
-          <div className="flex-[3_3_0%] min-h-0 grid grid-cols-2 auto-rows-fr gap-3">
-            <ChartCard className="h-full"
+        <div className="flex flex-col gap-3 overflow-visible md:flex-1 md:min-h-0 md:overflow-hidden">
+          <div className="grid grid-cols-1 gap-3 md:flex-[3_3_0%] md:min-h-0 md:grid-cols-2 md:auto-rows-fr">
+            <ChartCard className="h-[360px] md:h-full"
               title={`Top ${topN} Countries — ${view==="elec"?"Electricity (GEP)":"Heat (GHP)"} 2024`}
               sub="GWh. Gold = 1st, lighter blue = top 3, dark blue = rest."
               insight={view==="elec"
@@ -115,7 +115,7 @@ export function CountriesDashboard() {
               </ResponsiveContainer>
             </ChartCard>
 
-            <ChartCard className="h-full"
+            <ChartCard className="h-[320px] md:h-full"
               title="Renewable Share vs Total Production (Electricity 2024)"
               sub="Each dot = 1 EU country. X = total GWh, Y = % from renewables."
               insight="Top-left = small but very green (Austria, Denmark, Latvia). Large producers like Germany and Spain show mid-range renewable shares (~50–56%).">
@@ -143,8 +143,8 @@ export function CountriesDashboard() {
             </ChartCard>
           </div>
 
-          <div className="flex-[2_2_0%] min-h-0">
-            <ChartCard className="h-full"
+          <div className="md:flex-[2_2_0%] md:min-h-0">
+            <ChartCard className="h-[340px] md:h-full"
               title="Renewable Share Ranking — All 27 EU Countries (Electricity 2024)"
               sub="Sorted by renewable share. Gold ≥70%, Green ≥40%, Blue ≥20%, Slate <20%."
               insight="10 EU countries exceed 70% renewable electricity share. Only 6 fall below 20%. The EU average is 46.5%.">

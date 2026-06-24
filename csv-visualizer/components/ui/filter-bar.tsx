@@ -47,7 +47,11 @@ interface FuelChipsProps {
 export function FuelChips({ fuels, selected, colors, onChange }: FuelChipsProps) {
   const toggle = (f: string) => {
     const next = new Set(selected);
-    next.has(f) ? next.delete(f) : next.add(f);
+    if (next.has(f)) {
+      next.delete(f);
+    } else {
+      next.add(f);
+    }
     if (next.size > 0) onChange(next);
   };
   const all = selected.size === fuels.length;

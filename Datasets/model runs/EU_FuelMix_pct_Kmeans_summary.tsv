@@ -1,0 +1,13 @@
+algorithm	iterations	wcsse	n_instances	n_clusters	missing_replacement	class_attribute	incorrectly_clustered_n	incorrectly_clustered_pct	source_file
+kMeans	2	3.0359438307420334	12	3	mean/mode	TrajectoryClass	5	41.6667	EU_FuelMix_pct_Kmeans.txt
+
+cluster_id	n	pct	class_label
+0	2	17	Surging
+1	7	58	Declining
+2	3	25	No_class
+
+class	assigned_to_cluster_0	assigned_to_cluster_1	assigned_to_cluster_2
+Declining	0	3	1
+Stable	0	1	0
+Surging	2	2	1
+best_cluster_match	Surging	Declining	No_class

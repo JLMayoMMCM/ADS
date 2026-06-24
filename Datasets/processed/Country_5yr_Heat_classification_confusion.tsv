@@ -1,0 +1,7 @@
+model	true_class	predicted_Low	predicted_Med	predicted_High
+J48	Low	5	3	0
+J48	Med	2	4	2
+J48	High	0	2	7
+Random_Forest	Low	4	2	2
+Random_Forest	Med	4	3	1
+Random_Forest	High	0	2	7

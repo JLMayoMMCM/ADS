@@ -1,0 +1,580 @@
+================================================================================
+  EU ENERGY DASHBOARD — SECTION STRUCTURE AND CONTENT
+================================================================================
+
+This document describes the content, charts, filters, and interpretations for
+each section of the EU Energy Analytics Dashboard (csv-visualizer).
+
+Navigation is via the top bar. All sections share the same EU-themed layout:
+  - Fixed navigation header (always visible, EU blue #003399)
+  - Filter bar directly below the header (section-specific controls)
+  - Main content area (fills the remaining viewport — no page scrolling)
+  - Light / dark mode toggle (top-right of the navigation bar)
+
+
+================================================================================
+  SECTION 1: OVERVIEW
+================================================================================
+
+Purpose
+  Landing view. Presents the EU-27 energy system at a high level — both
+  electricity and heat — giving the user immediate context before exploring
+  individual sections.
+
+Filter bar
+  Year Range Slider
+    6 discrete stops: 1999, 2004, 2009, 2014, 2019, 2024.
+    Adjusting this slider trims the charts to show only the selected time range.
+    Selected years are highlighted in gold; the range is displayed to the right.
+
+KPI Cards (4 cards, always show 2024 values)
+  Total Electricity 2024    Total GEP for EU-27 in 2024 (GWh)
+                            Trend indicator: % change versus 1999
+  Total Heat 2024           Total GHP for EU-27 in 2024 (GWh)
+                            Trend indicator: % change versus 1999
+  Renewable Share 2024      Renewables & Biofuels as % of gross electricity
+                            Gold accent; shows percentage-point gain since 1999
+  Nuclear Share 2024        Nuclear as % of gross electricity in 2024
+                            Shows 1999 baseline for comparison
+
+Charts (2 charts, side by side, fill remaining height)
+
+  Electricity vs Heat Production  [Line chart]
+    Two lines on the same axis: EU-27 Gross Electricity Production (blue) and
+    Gross Heat Production (gold), plotted in GWh per 5-year interval.
+    Y-axis in millions of GWh (M GWh). Responds to year range slider.
+
+    Insight: Electricity has remained broadly stable in the 2.5-2.9 TWh range
+    while heat has declined approximately 4% since its 2004 peak as building
+    efficiency standards improved across the EU.
+
+  Electricity Source Mix  [100% Stacked Area chart]
+    Three stacked bands showing the proportional share of Renewable, Nuclear,
+    and Fossil sources in EU-27 electricity. Bands always sum to 100%.
+    Renewable = green. Nuclear = dark blue. Fossil = slate.
+    Responds to year range slider.
+
+    Insight: Renewables surpassed Nuclear around 2009 and have grown
+    continuously. Fossil share dropped from approximately 56% (1999) to
+    approximately 33% (2024), confirming the structural shift underway.
+
+
+================================================================================
+  SECTION 2: ELECTRICITY
+================================================================================
+
+Purpose
+  Deep-dive into Gross Electricity Production (GEP). Covers all fuel types
+  across the full 1999-2024 time series with interactive filters.
+
+Filter bar
+  Year Range Slider      Same 6-stop slider; trims all charts to selected range.
+  Fuel Chip Selector     Multi-select pill buttons for 10 fuel types:
+                         Nuclear, Natural Gas, Solid Fossil Fuels, Lignite,
+                         Oil & Petroleum, Hydro, Wind, Solar PV, Bioenergy, Waste.
+                         "All" button to toggle all on or off.
+
+KPI Cards (4 cards)
+  Total GEP 2024         Total gross electricity in 2024 (GWh), % vs 1999
+  Renewable Share        Renewables & Biofuels % of 2024 GEP; 1999 baseline
+  Wind Share 2024        Wind as % of 2024 GEP; 1999 baseline
+  Solar PV Share 2024    Solar PV as % of 2024 GEP (was ~0% in 1999)
+
+Charts (4 charts in a 2x2 grid, fill remaining height)
+
+  GEP by Fuel — Stacked Area  [Stacked area chart]
+    Each fuel type is a stacked band showing absolute GWh output per period.
+    Only fuels selected by the fuel chip filter are shown.
+    Y-axis in millions of GWh.
+
+    Insight: Renewables & Biofuels overtook Solid Fossil Fuels around 2009 and
+    now represent the single largest category at 46.5% of total GEP.
+
+  2024 Fuel Mix — Share of Gross Electricity  [Donut pie chart]
+    Percentage breakdown of each fuel in the most recent year (2024).
+    Label={false}: all values shown in the legend below as "Fuel: X.X%".
+    Fuels with <0.05% share are omitted.
+    Responds to fuel chip filter (removes deselected fuels from the pie).
+
+  Nuclear vs Renewables  [Line chart]
+    Four lines: Nuclear (dark blue), Renewables & Biofuels (green),
+    Wind (sky blue dashed), Solar PV (gold dashed).
+    Tracks the energy transition crossover point.
+    Y-axis in thousands of GWh.
+
+    Insight: Renewables crossed above Nuclear in 2014. By 2024 renewables
+    produce nearly twice as much electricity as nuclear: 1,292 TWh vs 650 TWh.
+
+  Fuel Mix % — Stacked Bar  [100% Stacked bar chart]
+    Each bar represents one year and sums to 100% of gross electricity.
+    Shows the structural shift in proportions year by year.
+    Only selected fuels are included.
+
+    Insight: Solid Fossil Fuels + Lignite fell from 41.8% (1999) to 15.7%
+    (2024). Wind + Solar PV rose from 0.5% to 27.8% over the same period.
+
+
+================================================================================
+  SECTION 3: HEAT
+================================================================================
+
+Purpose
+  Gross Heat Production (GHP) — district heat and combined heat & power (CHP)
+  across the EU-27, broken down by fuel type.
+
+Filter bar
+  Year Range Slider      6-stop slider; trims all charts to selected range.
+  Fuel Chip Selector     Multi-select for 8 heat fuel types:
+                         Natural Gas, Solid Fossil Fuels, Lignite,
+                         Oil & Petroleum, Renewables & Biofuels, Waste,
+                         Nuclear, Solar Thermal.
+
+KPI Cards (4 cards)
+  Total GHP 2024         Total gross heat in 2024 (GWh), % vs 1999
+  Renewable Heat 2024    Renewables & Biofuels as % of heat mix; 1999 baseline
+  Gas Share 2024         Natural Gas as % of heat mix; labeled "largest single source"
+  Fossil Share 2024      Combined Gas + Coal + Oil + Lignite as % of heat mix
+
+Charts (3 charts: 2 in a top row, 1 below; proportional height 60% / 40%)
+
+  GHP by Fuel — Stacked Area  [Stacked area chart]  (top left)
+    Same structure as the electricity stacked area but for heat fuels.
+    GWh per period per selected fuel. Y-axis in thousands of GWh.
+
+    Insight: Total heat production peaked in 2004 (~708 TWh) and has since
+    declined ~21% as building efficiency improved. Renewables & Biofuels nearly
+    quadrupled (+293%) while Solid Fossil Fuels fell 63%.
+
+  2024 Heat Mix by Fuel  [Donut pie chart]  (top right)
+    Percentage breakdown of heat fuel mix in 2024.
+    Same legend-with-values approach as the electricity pie.
+    Fuels below 0.05% are hidden.
+
+    Insight: Natural Gas remains the largest source at 32.2%, but Renewables
+    & Biofuels grew from 8.5% (1999) to 34.9% (2024) — now the second
+    largest and the main growth driver.
+
+  Key Fuel Trends in Heat Production  [Line chart]  (bottom, full width)
+    Four fixed lines: Natural Gas (blue), Solid Fossil Fuels (slate),
+    Renewables & Biofuels (green), Waste (light slate, dashed).
+    GWh per period. Responds to year range slider.
+
+    Insight: Natural Gas declined ~5% from 1999 to 2024. Renewables & Biofuels
+    quadrupled. Solid Fossil Fuels fell 63%. These three trajectories in one
+    chart capture the entire narrative of EU heat decarbonization.
+
+
+================================================================================
+  SECTION 4: COUNTRIES
+================================================================================
+
+Purpose
+  EU member state comparisons. Users can rank, sort, filter, and explore
+  country-level electricity or heat production and renewable share.
+
+Filter bar
+  Elec / Heat toggle     Switches all charts between electricity and heat data
+  Country search         Text input filtering countries by name
+  Top N selector         Shows top 5, 10, 15, or all 27 countries in the bar chart
+  Sort buttons           Sort by Total Production, Renewable %, or A-Z
+
+Charts (3 charts: 2 in a top row, 1 below; proportional height 60% / 40%)
+
+  Top N Countries — Horizontal Bar  [Horizontal bar chart]  (top left)
+    Ranks the top N countries by total production (GWh) in 2024.
+    Color coding: Gold = 1st place, lighter blue = 2nd and 3rd, dark blue = rest.
+    Responds to Elec/Heat toggle, Top N selector, sort, and search.
+
+    Insight (electricity): Germany, France, and Spain together account for
+    approximately 48% of EU-27 total electricity production in 2024.
+
+    Insight (heat): Germany, France, and Poland produce the most district
+    heat in the EU, driven by established large-scale CHP networks.
+
+  Renewable Share vs Total Production  [Scatter chart]  (top right)
+    Each dot represents one EU country.
+    X-axis: Total production (GWh). Y-axis: Renewable share (%).
+    Hover tooltip shows country name, total GWh, and renewable %.
+    Always shows electricity data regardless of Elec/Heat toggle.
+
+    Insight: Countries in the top-left (small total, high renewable %) include
+    Austria, Denmark, and Latvia. Large producers like Germany and Spain show
+    mid-range renewable shares (~50-56%). The scatter reveals that scale and
+    renewable share are largely independent.
+
+  Renewable Share Ranking — All 27 Countries  [Vertical bar chart]  (bottom, full width)
+    All 27 EU countries sorted by descending renewable share (electricity 2024).
+    Color thresholds:
+      Gold   = 70% or above (10 countries)
+      Green  = 40% to 69%
+      Blue   = 20% to 39%
+      Slate  = below 20% (6 countries)
+    X-axis: country labels at 45° angle.
+
+    Insight: 10 EU countries exceed 70% renewable electricity share. Only 6
+    fall below 20%. The EU-27 average is approximately 46.5%.
+
+
+================================================================================
+  SECTION 5: TRENDS
+================================================================================
+
+Purpose
+  Long-run trajectory analysis comparing how fuel volumes and percentage shares
+  have changed from 1999 to 2024.
+
+Filter bar
+  Year Range Slider      6-stop slider; trims all charts to selected range.
+  Fuel Chip Selector     Multi-select for 6 trend fuels:
+                         Renewables & Biofuels, Wind, Solar PV,
+                         Nuclear, Natural Gas, Solid Fossil Fuels.
+
+Charts (3 charts: 1 large top, 2 smaller bottom; proportional height 60% / 40%)
+
+  Absolute GWh Output by Fuel  [Line chart]  (top, full width)
+    Six lines showing raw GWh output per fuel per period. Only selected fuels
+    are shown. Y-axis in thousands of GWh.
+    Clear visual divergence: renewables rising, fossil fuels declining.
+
+    Insight: Renewables & Biofuels grew from 378K GWh (1999) to 1,292K GWh
+    (2024), an increase of +242%. Solid Fossil Fuels dropped from 744K to
+    272K GWh (-63%). These two lines crossing is the visual signature of the
+    EU energy transition.
+
+  % Growth vs 1999 Baseline  [Line chart]  (bottom left)
+    Percentage change for each selected fuel relative to its 1999 value.
+    Chart is capped at +300% to -100% for readability. Wind and Solar PV
+    values are far beyond +300% and appear at the chart ceiling.
+    Y-axis domain: -100% to +300%. Zero reference line shown.
+
+    Insight: Solar PV grew +345,276% from 1999 to 2024 (86 GWh to 297K GWh).
+    Wind grew over +2,000%. These are not incremental improvements but
+    technology substitution events. Nuclear declined 23.4%.
+
+  2024 Change vs 1999 — Net Shift  [Bar chart]  (bottom right)
+    A single bar per selected fuel showing the net percentage gain or loss
+    from 1999 to 2024. Zero reference line shown.
+    Green bars = net growth. Blue bars = net decline.
+    Provides a snapshot summary of the entire 25-year transition.
+
+    Insight: The color contrast (green renewables, blue fossil/nuclear) makes
+    the structural shift immediately visible. No transitional ambiguity exists
+    among the selected fuels — every fossil fuel declined; every renewable grew.
+
+
+================================================================================
+  SECTION 6: WEKA
+================================================================================
+
+Purpose
+  Interactive explorer for machine learning model outputs produced in WEKA.
+  Covers 6 models: 4 kMeans clustering models and 1 classification model
+  (J48 + Random Forest).
+
+  Each sub-view is selected via tab buttons in the filter bar. All sub-views
+  include a plain-language interpretation panel explaining what the algorithm
+  did, what each cluster or class means, and what the results imply for EU
+  energy policy.
+
+Filter bar
+  Sub-view selector (6 tab buttons):
+    Country Elec Clusters
+    Country Heat Clusters
+    Classification
+    GEP Fuel Clusters
+    GHP Fuel Clusters
+    Fuel Mix Trajectory
+
+  Content scrolls within the section if it exceeds the viewport.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: Country Elec Clusters
+  ------------------------------------------------------------------------
+
+  Algorithm: kMeans, k=3
+  Dataset: 27 EU countries described by electricity production totals across
+           6 periods (1999-2024) and 2024 fuel breakdown.
+  WCSSE: see model output file Country_5yr_Elec_kMeans.txt
+
+  Clusters:
+    Cluster 0 — Med Renewable  (n=4, 15%)
+      Countries with moderate output and mixed fossil/renewable portfolios.
+    Cluster 1 — Low Renewable  (n=5, 19%)
+      Countries dominated by fossil fuels or nuclear with limited renewables.
+    Cluster 2 — High Renewable  (n=18, 67%)
+      The majority of EU states; higher renewable proportions, often smaller
+      producers where wind, solar, or hydro dominates the mix.
+
+  Interpretation panel:
+    Explains how kMeans partitioned 27 countries, what each cluster
+    represents in terms of energy policy, and why the Large/High cluster
+    is dominant (most EU countries are smaller producers with good renewable
+    share). Low-Renewable countries are identified as primary policy targets.
+
+  Charts:
+    Cluster Distribution Pie
+      Donut chart showing n and % for each cluster (3 segments).
+      Cluster legend below with color, name, count, and percentage.
+
+    Cluster Centroids — 5-Year Electricity Totals  [Grouped bar chart]
+      4 bar groups (Full Data, Cluster 0, 1, 2) per year period.
+      Shows the average electricity output per cluster per period.
+      Reveals size gradient between large-producer and small-producer clusters.
+
+    Cluster Centroids — 2024 Fuel Breakdown  [Grouped bar chart]
+      4 bar groups per fuel category for 2024.
+      Shows the average fuel profile (GWh per fuel) for each cluster.
+      Highlights differences in fuel composition between clusters.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: Country Heat Clusters
+  ------------------------------------------------------------------------
+
+  Algorithm: kMeans, k=3
+  Dataset: 27 EU countries described by heat production totals across 6
+           periods and 2024 fuel breakdown.
+
+  Clusters:
+    Cluster 0 — Med Heat  (n=5, 19%)
+      Moderate heat producers, averaging 44-55K GWh per period.
+      Fossil-heavy mixes.
+    Cluster 1 — High Heat  (n=3, 11%)
+      Major district-heating economies averaging 70K+ GWh per period.
+      Gas and Renewables dominant.
+    Cluster 2 — Low Heat  (n=19, 70%)
+      The large majority of EU countries with minimal district heat
+      (<10K GWh per period). Primarily warm-climate economies.
+
+  Interpretation panel:
+    Explains the climate-driven asymmetry — why 19 of 27 countries are Low
+    Heat producers — and the declining trend across all clusters from 2004
+    to 2024. Identifies High Heat countries as the primary levers for
+    EU district heating decarbonization given their scale.
+
+  Charts:
+    Cluster Distribution Pie
+      Donut chart showing n and % for each cluster (3 segments).
+      Cluster legend below with color, name, count, and percentage.
+
+    Cluster Centroids — 5-Year Heat Totals  [Grouped bar chart]
+      Average heat output per cluster per period. Shows the stark volume
+      difference between the 3 High Heat countries and the 19 Low Heat.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: Classification
+  ------------------------------------------------------------------------
+
+  Task: Predict each country's RenewableShareClass in heat production.
+  Target classes: Low / Med / High (renewable share of total heat)
+  Features: 5-year heat totals and fuel breakdown per country
+  Models: J48 Decision Tree and Random Forest (10-fold cross-validation)
+
+  Results:
+    J48 Decision Tree    64% accuracy (16/27 correct), Kappa 0.459
+    Random Forest        56% accuracy (14/27 correct), Kappa 0.337
+
+  Interpretation panel:
+    Explains the classification task, why J48 outperforms Random Forest
+    on a small dataset (n=27), what Cohen's Kappa means (moderate agreement
+    beyond chance), which classes are easiest and hardest to predict, and
+    the policy implication of identifying Low-renewable countries reliably.
+    Notes that the "Med" class (borderline countries) causes the most
+    misclassifications in both models.
+
+  KPI Badges (4 metrics displayed prominently):
+    J48 Accuracy (gold highlight)   64%
+    J48 Kappa                       0.459
+    Random Forest Accuracy          56%
+    Random Forest Kappa             0.337
+
+  Charts:
+    Per-Class Metrics — J48 vs Random Forest  [Grouped bar chart]
+      6 groups (J48-Low, J48-Med, J48-High, RF-Low, RF-Med, RF-High).
+      4 bars per group: F-Measure, ROC Area, Precision, Recall.
+      All values on 0-1 scale.
+      Shows that "High" class has best metrics, "Med" is consistently worst.
+
+    Confusion Matrices (2 side-by-side tables)
+      Left: J48 confusion matrix (3x3).
+      Right: Random Forest confusion matrix (3x3).
+      Rows = True class. Columns = Predicted class.
+      Diagonal cells highlighted green = correct predictions.
+      Off-diagonal cells = misclassified countries.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: GEP Fuel Clusters
+  ------------------------------------------------------------------------
+
+  Algorithm: kMeans, k=2
+  Dataset: 13 electricity fuel types described by renewable share ratio
+           across 5 periods (1999-2019) plus 2024 absolute GWh output.
+  WCSSE: 2.785 (converged in 3 iterations)
+
+  Clusters:
+    Cluster 0 — Low-Renewable Fuels  (n=10, 77%)
+      Nuclear, Natural Gas, Solid Fossil Fuels, Lignite, Oil & Petroleum,
+      Bioenergy, Waste, and others. Renewable share ratios below 21%.
+      Average 2024 output: 213K GWh per fuel type.
+
+    Cluster 1 — High-Renewable Fuels  (n=3, 23%)
+      Hydro, Wind, Solar PV. Renewable share ratios of 77-83%.
+      Average 2024 output: 738K GWh per fuel type.
+
+  Interpretation panel:
+    Explains what the binary clustering found, why Bioenergy falls in
+    the Low-Renewable cluster (it co-combusts with fossil fuels in CHP),
+    what the WCSSE indicates about cluster quality, and the significance
+    of the 3× output gap between clusters. Notes the energy transition
+    implication: only 3 fuel types drive the clean electricity surge.
+
+  Model metric badges: WCSSE, iterations, fuel type count.
+
+  Charts:
+    Renewable Share Ratio — Centroid Trajectory  [Line chart]
+      3 lines (Full Data, Low-Renewable centroid, High-Renewable centroid).
+      X-axis: 5-year periods 1999-2019. Y-axis: 0-100% renewable ratio.
+      Shows the consistent gap between the two clusters across all periods.
+
+    2024 Production Total  [Grouped bar chart]
+      One group ("2024 GWh") with 3 bars: Full Data, Low-Renewable, High-Renewable.
+      Illustrates the disproportionate output from the High-Renewable cluster.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: GHP Fuel Clusters
+  ------------------------------------------------------------------------
+
+  Algorithm: kMeans, k=2 (mirrors GEP analysis for heat fuels)
+  Dataset: Heat fuel types described by renewable share ratio and 2024 GWh.
+  WCSSE: 2.298 (converged in 2 iterations)
+
+  Clusters:
+    Cluster 0 — High-Renewable Heat Fuels  (n=3, 23%)
+      Solar Thermal, Geothermal, Bioenergy. Renewable share >= 69%.
+      Centroid rose from 0.687 (1999) to 0.827 (2019).
+      Average 2024 output: 153K GWh per fuel type.
+
+    Cluster 1 — Low-Renewable Heat Fuels  (n=10, 77%)
+      Natural Gas, Solid Fossil Fuels, Lignite, Oil, Waste, Nuclear.
+      Centroid below 24% renewable share throughout.
+      Average 2024 output: 41K GWh per fuel type.
+
+  Interpretation panel:
+    Explains why the heat clustering is even tighter than electricity
+    (WCSSE 2.298 vs 2.785), notes Bioenergy's outsized 153K GWh centroid
+    output for just 3 fuel types, and identifies the decarbonization
+    lever: replacing Natural Gas with Bioenergy and Solar Thermal in
+    district heating. Notes the even more binary nature of heat fuels
+    — fossil vs. renewable — with almost no ambiguous middle ground.
+
+  Model metric badges: WCSSE, iterations, fuel type count.
+
+  Charts:
+    Renewable Share Ratio — GHP Cluster Trajectory  [Line chart]
+      3 lines showing High-Renewable, Low-Renewable, and Full Data centroids
+      over 1999-2019. Same structure as GEP chart.
+
+    2024 GHP Total — Cluster Centroids  [Grouped bar chart]
+      Centroid GWh comparison: High-Renewable vs Low-Renewable vs Full Data.
+
+
+  ------------------------------------------------------------------------
+  SUB-VIEW: Fuel Mix Trajectory
+  ------------------------------------------------------------------------
+
+  Algorithm: kMeans, k=3
+  Dataset: 12 electricity fuel types described by their % share of GEP
+           across 6 time periods (1999-2024). Trajectory clustering —
+           groups by the shape of the trajectory, not the absolute value.
+  WCSSE: 3.036 (converged in 2 iterations)
+
+  Clusters:
+    Cluster 0 — Surging  (n=2, 17%)
+      Solar PV and Wind. Near-zero shares in 1999; steep growth to 2024.
+      Centroid: 0.26% share (1999) → 13.91% share (2024).
+
+    Cluster 1 — Declining  (n=7, 58%)
+      Nuclear, Natural Gas, Solid Fossil Fuels, Lignite, Hydro, Renewables
+      aggregate, Oil. Historically dominant fuels losing or stagnating share.
+      Centroid: ~18% across all periods (mixed trajectories average out).
+
+    Cluster 2 — Fading Out  (n=3, 25%)
+      Marginal fuels with small, declining shares across all years.
+      Centroid: 6.68% share (1999) → 0.83% share (2024).
+
+  Interpretation panel:
+    Explains what trajectory clustering means (vs. value clustering),
+    identifies which specific fuels belong to each cluster, explains
+    why the Declining cluster has a stable centroid despite containing
+    declining fuels (trajectories average out), and frames the three
+    archetypes as a complete narrative of the EU energy transition:
+    two fuels surging, seven declining, three disappearing.
+    Notes this is the most analytically rich model in the project.
+
+  Cluster size badges: n and % for Surging, Declining, and Fading Out.
+
+  Charts:
+    Centroid Share Trajectories  [Line chart]
+      4 lines: Full Data (dashed), Surging, Declining, Fading Out.
+      X-axis: years 1999-2024. Y-axis: % share of GEP.
+      The Surging line rising steeply from near-zero is the most
+      visually striking feature of the entire WEKA section.
+
+    kMeans Centroid Values Over Time  [Grouped bar chart]
+      3 bar groups per year (Surging, Declining, Fading Out).
+      Raw centroid % values per cluster per year.
+      Reinforces the trajectory shapes as a bar comparison.
+
+
+================================================================================
+  SHARED UI ELEMENTS
+================================================================================
+
+Navigation Bar (top, always visible)
+  EU flag icon + "EU Energy Dashboard" title  (left)
+  Section tabs: Overview, Electricity, Heat, Countries, Trends, WEKA  (center)
+  Light/Dark mode toggle button with sun/moon icon  (right)
+  Background: always EU blue (#003399) regardless of theme.
+
+Filter Bar (below navigation, section-specific)
+  Compact bar showing controls relevant to the current section.
+  Year Range Slider: 6 stops, selected range highlighted in gold.
+  Fuel Chips: color-coded pill buttons per fuel type.
+  Country controls: text search + Top N selector.
+  WEKA sub-view tabs: 6 buttons for model selection.
+
+KPI / Stat Cards
+  Compact cards displaying a single metric with label, value, and trend.
+  Gold accent border for the primary renewable metric in each section.
+  Up/down arrows with green/red color for trend direction.
+
+Chart Cards
+  All charts use the same card container: rounded border, card background,
+  title, optional subtitle, chart area, optional insight text at the bottom.
+  Insight text (labeled "Insight:") provides a one-sentence finding
+  specific to that chart's data.
+
+Tooltip style (all charts)
+  Dark/light adaptive background with EU border color.
+  Font size 12px, compact padding. Hover to reveal exact values.
+
+Color palette
+  EU Blue    #003399    Navigation, primary buttons, fossil fuel lines
+  EU Gold    #FFCC00    Accents, 1st place, Surging cluster, Solar PV
+  Green      #22C55E    Renewables, positive trends, correct predictions
+  Mid Blue   #4B80D4    Natural Gas, secondary chart lines
+  Slate      #64748B    Solid Fossil Fuels, reference lines, Full Data
+  Dark Slate #334155    Lignite, Fading Out cluster
+  Sky Blue   #38BDF8    Wind
+  Light Slate #94A3B8   Waste, muted elements
+  Red        #DC2626    Downward trends (light mode gold becomes red-ish)
+  Orange     #F97316    Med cluster labels in WEKA views
+
+
+================================================================================
+  END OF STRUCTURE DOCUMENT
+================================================================================

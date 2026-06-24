@@ -1,0 +1,6 @@
+algorithm	iterations	wcsse	n_instances	n_clusters	missing_replacement	source_file
+kMeans	3	2.784518674912735	13	2	mean/mode	GEP_Cluster.txt
+
+cluster_id	n	pct
+0	10	77
+1	3	23

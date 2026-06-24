@@ -1,0 +1,67 @@
+kMeans
+======
+
+Number of iterations: 5
+Within cluster sum of squared errors: 11.172402726115575
+
+Initial starting points (random):
+
+Cluster 0: 60944.018,64154.047,69087.512,65438.872,74234.304,82406.732,0,7536.924,23.648,0,718.878,67778.709,45707.084,9257.422,0,8143.267,4683.261,755.105,4.269
+Cluster 1: 38920,40430,36383,32183.62,29516.955,35317.578,0,909.403,1750.661,0,223.475,31408.963,22.562,20552.836,0,3776.202,7335.198,1025.077,0
+Cluster 2: 4110.32,4689.24,5568.067,5139.411,6438.385,6321.62,0,1678.253,0,0,0.916,4642.451,3208.793,275.985,0,536.379,634.027,0,0
+
+Missing values globally replaced with mean/mode
+
+Final cluster centroids:
+                                                                    Cluster#
+Attribute                                              Full Data           0           1           2
+                                                          (27.0)       (4.0)       (5.0)      (18.0)
+====================================================================================================
+1999_TOTAL                                            95789.7074 389005.0567  105833.354   27840.839
+2004_TOTAL                                           107705.0059 443861.3075 111095.2258  32061.8778
+2009_TOTAL                                           105425.7403 429914.0287  112483.531  31356.7343
+2014_TOTAL                                           105992.6644 439841.4402   110812.61  30465.1737
+2019_TOTAL                                           107695.6066   436335.83 124342.8204  30040.2197
+2024_TOTAL                                           104767.9408 410958.8115 125645.4572  30926.2149
+2024 fuel breakdown_Nuclear                           24057.2534 108745.8682  17098.6384   7170.5099
+2024 fuel breakdown_Natural Gas                       16414.4072  69868.6953   17309.934   4286.9191
+2024 fuel breakdown_Solid Fossil Fuels                10070.0643  28470.8792  20202.4876   3166.4322
+2024 fuel breakdown_Lignite                            6112.0017       19626   7264.0048   2788.8901
+2024 fuel breakdown_Oil & Petroleum excl. Biofuels     1693.8607    6956.706    951.9372    730.4294
+2024 fuel breakdown_Renewables & Biofuels             49352.3047  185106.984  65733.5472  14634.2531
+2024 fuel breakdown_Hydro                             13691.0849  45621.6053  22613.5408   4116.9537
+2024 fuel breakdown_Wind                              18149.5369   67706.265  24431.5102   5391.9381
+2024 fuel breakdown_Solar Thermal                       168.1493   1135.0075           0           0
+2024 fuel breakdown_Solar Photovoltaic                11258.4026  47546.8713  12070.6658   2968.6697
+2024 fuel breakdown_Bioenergy                          5966.4203  22139.6208   6718.5252   2163.4577
+2024 fuel breakdown_Waste                               742.3678   2913.1985   1095.5604    161.8519
+2024 fuel breakdown_Batteries                            38.5543    128.4903     82.2266      6.4373
+
+
+
+
+Time taken to build model (full training data) : 0 seconds
+
+=== Model and evaluation on training set ===
+
+Clustered Instances
+
+0       4 ( 15%)
+1       5 ( 19%)
+2      18 ( 67%)
+
+
+Class attribute: RenewableShareClass
+Classes to Clusters:
+
+ 0 1 2  <-- assigned to cluster
+ 1 2 6 | Low
+ 2 1 6 | Med
+ 1 2 6 | High
+
+Cluster 0 <-- Med
+Cluster 1 <-- Low
+Cluster 2 <-- High
+
+Incorrectly clustered instances :	17.0	 62.963  %
+

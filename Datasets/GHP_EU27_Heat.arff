@@ -1,0 +1,25 @@
+@relation 'EU_Electricity_Heat_1999_2024_GHP_EU27_Heat'
+
+@attribute 'Fuel / Energy Source' string
+@attribute '1999' numeric
+@attribute '2004' numeric
+@attribute '2009' numeric
+@attribute '2014' numeric
+@attribute '2019' numeric
+@attribute '2024' numeric
+
+@data
+'TOTAL',585209.722,708635.421,662952.722,632090.859,645600.383,561184.202
+'Nuclear',950.277,1816.388,1853.333,1124.444,1105.548,1152.759
+'Natural Gas',190233.057,299872.744,265930.2,220726.464,218119.525,180821.409
+'Solid Fossil Fuels',226114.722,212948.61,187893.251,163371.855,135354.763,83698.848
+'Lignite',61798.333,40227.501,35973.057,34178.333,26312.761,18050.139
+'Oil & Petroleum excl. Biofuels',74789.719,65160.551,48364.496,29259.725,21090.849,13524.413
+'Renewables & Biofuels',49904.168,71545.684,98778.122,151239.665,187836.54,195897.126
+'Hydro',?,?,?,?,?,?
+'Wind',?,?,?,?,?,?
+'Solar Thermal',6.389,14.167,45.612,230.459,683.821,736.777
+'Solar Photovoltaic',?,?,?,?,?,?
+'Bioenergy',?,?,?,?,?,?
+'Waste',14448.056,17031.944,23309.495,29068.54,36281.812,39437.953
+'Batteries',?,?,?,?,?,?

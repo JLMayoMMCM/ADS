@@ -1,0 +1,13 @@
+algorithm	iterations	wcsse	n_instances	n_clusters	missing_replacement	class_attribute	incorrectly_clustered_n	incorrectly_clustered_pct	source_files
+kMeans	5	11.172402726115575	27	3	mean/mode	RenewableShareClass	17	62.963	Country_5yr_Elec_kMeans.txt; Country_5yr_Elec_processed.txt (identical)
+
+cluster_id	n	pct	class_label
+0	4	15	Med
+1	5	19	Low
+2	18	67	High
+
+class	assigned_to_cluster_0	assigned_to_cluster_1	assigned_to_cluster_2
+Low	1	2	6
+Med	2	1	6
+High	1	2	6
+best_cluster_match	Med	Low	High

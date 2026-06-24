@@ -1,0 +1,7 @@
+sheet	description	rows	attributes	missing_cells_as_question_mark	literal_dash_cells	literal_undefined_cells	numeric_attributes	string_attributes	tsv_file	arff_file
+EU27 Electricity (GEP)	EU27 gross electricity production by fuel, 5-year interval 1999-2024	14	7	6	0	0	6	1	GEP_EU27_Electricity.tsv	GEP_EU27_Electricity.arff
+EU27 Heat (GHP)	EU27 gross heat production by fuel, 5-year interval 1999-2024	14	7	30	0	0	6	1	GHP_EU27_Heat.tsv	GHP_EU27_Heat.arff
+Country 5yr Elec	Country gross electricity totals and 2024 fuel breakdown	28	21	29	0	0	19	2	Country_5yr_Elec.tsv	Country_5yr_Elec.arff
+Country 5yr Heat	Country gross heat totals and 2024 fuel breakdown	28	21	141	0	0	19	2	Country_5yr_Heat.tsv	Country_5yr_Heat.arff
+Fuel Mix % GEP	EU27 gross electricity fuel mix shares	13	7	13	0	0	6	1	Fuel_Mix_pct_GEP.tsv	Fuel_Mix_pct_GEP.arff
+Trend Analysis	EU27 gross electricity trend and growth vs 1999 base year	17	7	18	0	0	6	1	Trend_Analysis.tsv	Trend_Analysis.arff

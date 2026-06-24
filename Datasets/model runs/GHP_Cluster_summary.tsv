@@ -1,0 +1,6 @@
+algorithm	iterations	wcsse	n_instances	n_clusters	missing_replacement	source_file
+kMeans	2	2.2976085775315847	13	2	mean/mode	GHP_Cluster.txt
+
+cluster_id	n	pct
+0	3	23
+1	10	77

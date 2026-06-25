@@ -144,7 +144,7 @@ export function ElectricityDashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--eu-border)" />
                 <XAxis dataKey="year" tick={TICK} />
                 <YAxis tickFormatter={v => `${(v*100).toFixed(0)}%`} tick={TICK} axisLine={false} tickLine={false} />
-                <Tooltip {...TTP} formatter={(v: unknown) => typeof v === "number" ? formatPct(v * 100) : String(v)} />
+                <Tooltip {...TTP} formatter={(v: unknown) => typeof v === "number" ? formatPct(v) : String(v)} />
                 <Legend wrapperStyle={LGND} />
                 {activeFuels.map(f => <Bar key={f} dataKey={f} stackId="a" fill={FUEL_COLORS[f] ?? "#888"} />)}
               </BarChart>

@@ -111,7 +111,7 @@ export function OverviewDashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--eu-border)" />
                 <XAxis dataKey="year" tick={TICK} />
                 <YAxis tickFormatter={v => `${(v*100).toFixed(0)}%`} tick={TICK} axisLine={false} tickLine={false} />
-                <Tooltip {...TTP} formatter={(v: unknown) => typeof v === "number" ? formatPct(v * 100) : String(v)} />
+                <Tooltip {...TTP} formatter={(v: unknown) => typeof v === "number" ? formatPct(v) : String(v)} />
                 <Legend wrapperStyle={LGND} />
                 <Area type="monotone" dataKey="Renewable" stackId="1" stroke="#22C55E" fill="#22C55E" fillOpacity={0.85} />
                 <Area type="monotone" dataKey="Nuclear"   stackId="1" stroke="#1A52B8" fill="#1A52B8" fillOpacity={0.85} />

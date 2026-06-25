@@ -54,6 +54,7 @@ export function ElectricityDashboard() {
     .sort((a, b) => b.value - a.value);
 
   const gep2024 = gepTotals.at(-1)!;
+  const gepPct  = ((gep2024 - gepTotals[0]) / gepTotals[0] * 100);
   const mix24   = mix2024["Renewables & Biofuels"];
   const wind24  = mix2024["Wind"];
   const solar24 = mix2024["Solar PV"];
@@ -73,7 +74,7 @@ export function ElectricityDashboard() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
-          <StatCard label="Total GEP 2024"     value={formatGWh(gep2024)} trend="down" trendValue={`${((gep2024-gepTotals[0])/gepTotals[0]*100).toFixed(1)}% vs 1999`} />
+          <StatCard label="Total GEP 2024"     value={formatGWh(gep2024)} trend={gepPct>=0?"up":"down"} trendValue={`${gepPct.toFixed(1)}% vs 1999`} />
           <StatCard label="Renewable Share"     value={formatPct(mix24)}   accent trend="up" trendValue={`Was ${formatPct(fuelMixTimeSeries[0]["Renewables & Biofuels"])} in 1999`} />
           <StatCard label="Wind Share 2024"     value={formatPct(wind24)}  trend="up" trendValue={`Was ${formatPct(fuelMixTimeSeries[0]["Wind"])} in 1999`} />
           <StatCard label="Solar PV Share 2024" value={formatPct(solar24)} trend="up" trendValue="≈0% in 1999" />
